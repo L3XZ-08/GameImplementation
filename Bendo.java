@@ -1,0 +1,55 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Write a description of class Bendo here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Bendo extends Actor
+{   
+    public Bendo()
+    {
+    GreenfootImage image = getImage();
+    image.scale(50, 50);
+    }       
+    /**
+     * Act - do whatever the Bendo wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act()
+    {
+       move();
+       aim();
+    }
+    
+    public void move()
+    {
+    if (Greenfoot.isKeyDown("W") )
+    {
+        move(3);
+    }
+    if (Greenfoot.isKeyDown("S"))
+    {
+        move(-2);
+    }   
+    }
+    public void aim()
+    {
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        if (mouse != null)
+        {
+            turnTowards(mouse.getX(), mouse.getY());
+        }
+    }
+    
+    public void shoot()
+    {
+        if (Greenfoot.mouseClicked(null))
+        {
+            Bullet bullet = new Bullet();
+            MyWorld world = (MyWorld) getWorld();
+            world.addObject(bullet, this.getX(), this.getY());
+        }
+    }
+}
