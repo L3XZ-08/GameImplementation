@@ -22,9 +22,10 @@ public class Bullet extends Actor
     public void act()
     {
         move(20);
-        if (isTouching(Bee.class))
+        Bee bee = (Bee)getOneIntersectingObject(Bee.class);
+        if (bee != null)
         {
-            removeTouching(Bee.class);
+            bee.takeDamage(damage);
             getWorld().removeObject(this);
         }
     }
