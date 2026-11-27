@@ -11,6 +11,8 @@ public class Bendo extends Actor
     private int gunReloadTime;              
     private int reloadDelayCount;          
     private int shotsFired; 
+    private int health = 100;
+    private int damageBee = 20;
     public Bendo()
     {
         GreenfootImage image = getImage();
@@ -35,11 +37,11 @@ public class Bendo extends Actor
     {
         if (Greenfoot.isKeyDown("W") )
         {
-            move(3);
+            move(4);
         }
         if (Greenfoot.isKeyDown("S"))
         {
-            move(-2);
+            move(-3);
         }   
     }
 
@@ -61,12 +63,11 @@ public class Bendo extends Actor
             bullet.setRotation(getRotation());
         }
     }
-
-    private void checkCollision() 
+    public void takeDamage(int damageBee)
     {
-        Bee b = (Bee) getOneIntersectingObject(Bee.class);
-        if (b != null) {
-            getWorld().addObject(new Explosion(), getX(), getY());
+        health = health - damageBee;
+        if (health <= 0)
+        {
             getWorld().removeObject(this);
         }
     }

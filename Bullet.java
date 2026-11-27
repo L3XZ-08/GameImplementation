@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Bullet extends Actor
 {
-    private int damage = 16;
+    private int damageBull = 15;
     public Bullet()
     {
         GreenfootImage image = getImage();
@@ -25,7 +25,7 @@ public class Bullet extends Actor
         Bee bee = (Bee)getOneIntersectingObject(Bee.class);
         if (bee != null)
         {
-            bee.takeDamage(damage);
+            bee.takeDamage(damageBull);
             getWorld().removeObject(this);
         }
     }

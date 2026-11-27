@@ -20,6 +20,7 @@ public class MyWorld extends World
         
         prepare();
     }
+    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -30,5 +31,13 @@ public class MyWorld extends World
         addObject(bendo,327,453);
         Bee bee = new Bee();
         addObject(bee,956,401);
+        Bee bee2 = new Bee();
+        addObject(bee2,1002,414);
+        Bee bee3 = new Bee();
+        addObject(bee3,995,480);
+        Bee bee4 = new Bee();
+        addObject(bee4,1049,481);
+        Bee bee5 = new Bee();
+        addObject(bee5,1057,403);
     }
 }
