@@ -13,35 +13,36 @@ public class Bendo extends Actor
     private int shotsFired; 
     public Bendo()
     {
-    GreenfootImage image = getImage();
-    image.scale(50, 50);
-    gunReloadTime = 5;
-    reloadDelayCount = 0;
-    shotsFired = 0;
+        GreenfootImage image = getImage();
+        image.scale(50, 50);
+        gunReloadTime = 5;
+        reloadDelayCount = 0;
+        shotsFired = 0;
     }       
+
     /**
      * Act - do whatever the Bendo wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
-       move();
-       aim();
-       shoot();
+        move();
+        aim();
+        shoot();
     }
-    
+
     public void move()
     {
-    if (Greenfoot.isKeyDown("W") )
-    {
-        move(3);
+        if (Greenfoot.isKeyDown("W") )
+        {
+            move(3);
+        }
+        if (Greenfoot.isKeyDown("S"))
+        {
+            move(-2);
+        }   
     }
-    if (Greenfoot.isKeyDown("S"))
-    {
-        move(-2);
-    }   
-    }
-    
+
     public void aim()
     {
         MouseInfo mouse = Greenfoot.getMouseInfo();
@@ -50,17 +51,17 @@ public class Bendo extends Actor
             turnTowards(mouse.getX(), mouse.getY());
         }
     }
-    
+
     public void shoot()
     {
         if (Greenfoot.mouseClicked(null))
         {
-        Bullet bullet = new Bullet();
-        MyWorld world = (MyWorld) getWorld();
-        world.addObject(bullet, this.getX(), this.getY());
-        }    
+            Bullet bullet = new Bullet();
+            getWorld().addObject(bullet, this.getX(), this.getY());
+            bullet.setRotation(getRotation());
+        }
     }
-    
+
     private void checkCollision() 
     {
         Bee b = (Bee) getOneIntersectingObject(Bee.class);
@@ -69,4 +70,5 @@ public class Bendo extends Actor
             getWorld().removeObject(this);
         }
     }
-}   
+} 
+
